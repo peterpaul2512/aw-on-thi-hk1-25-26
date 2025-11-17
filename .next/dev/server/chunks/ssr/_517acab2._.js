@@ -386,54 +386,62 @@ function DeThiPage() {
                 {
                     num: "Câu 1 (3 điểm)",
                     desc: "Xóa tất cả phần tử lẻ trong mảng",
-                    code: `void C1(int*& a, int& n) {
-  if (a == NULL || n < 1) return;
-  for (int i = 0; i < n; i++) {
-    if (a[i] % 2 != 0) {
-      int* b = new int[n - 1];
-      for (int j = 0; j < i; j++)
-        b[j] = a[j];
-      for (int j = i; j < n - 1; j++)
-        b[j] = a[j + 1];
-      delete[] a;
-      a = b;
-      n--;
-      i--;
-    }
-  }
+                    code: `void XoaLe(int *&a, int &n){
+	int countChan = 0;
+	for (int i = 0; i<n; i++){
+		if (a[i] %2 == 0) countChan ++;
+	}
+
+	int *pb = new int[countChan];
+
+	int k = 0;
+	for (int i = 0; i < n; i++){
+		if(a[i] %2 == 0 ){
+			pb[k] = a[i]
+			k++;
+		}
+	}
+	delete []a;
+	a = pb;
+	n = countChan;
 }`
                 },
                 {
                     num: "Câu 2 (3 điểm)",
                     desc: "Đếm node chứa số nguyên tố",
-                    code: `bool KTNT(int n) {
-  if (n < 2) return false;
-  for (int i = 2; i <= sqrt(n); i++)
-    if (n % i == 0) return false;
-  return true;
+                    code: `bool LaSoNguyenTo(int n){
+	if (n < 2 ) return false;
+	for (int i = 2; i <= sqrt(n); i++){
+		if (n %i == 0) return false;
+	}
+	return true;
 }
 
-int countPrime(Node* h) {
-  int demNT = 0;
-  while (h != NULL) {
-    if (KTNT(h->data) == true)
-      demNT++;
-    h = h->pnext;
-  }
-  return demNT;
+int countPrime(Node* h){
+	int count = 0;
+	while (h != NULL){
+		if (LaSoNguyenTo(h->data)){
+			count++
+		}
+		h = h->pNext
+	}
+	return count;
 }`
                 },
                 {
                     num: "Câu 3 (3 điểm)",
                     desc: "Thêm sản phẩm vào tập tin",
-                    code: `void themSanPham(const char* tenFile,
-                  const SanPham& sp) {
-  FILE* f;
-  fopen_s(&f, tenFile, "ab");
-  if (f != NULL) {
-    fwrite(&sp, sizeof(SanPham), 1, f);
-    fclose(f);
-  }
+                    code: `void themSanPham(const char* tenFile, const SanPham& sp){
+	FILE *fp;
+	fopen_s(&fp, tenFile, "ab");
+
+	if (fp == NULL) {
+		printf("Khong the mo file");
+		return;
+	};
+
+	fwrite(&sp, sizeof(SanPham), 1, fp);
+	fclose(fp);
 }`
                 }
             ]
@@ -541,7 +549,7 @@ void C3c(SinhVien* a, int n) {
                 onClose: ()=>setSidebarOpen(false)
             }, void 0, false, {
                 fileName: "[project]/app/de-thi/page.tsx",
-                lineNumber: 173,
+                lineNumber: 181,
                 columnNumber: 7
             }, this),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -558,12 +566,12 @@ void C3c(SinhVien* a, int n) {
                                     size: 18
                                 }, void 0, false, {
                                     fileName: "[project]/app/de-thi/page.tsx",
-                                    lineNumber: 182,
+                                    lineNumber: 190,
                                     columnNumber: 13
                                 }, this)
                             }, void 0, false, {
                                 fileName: "[project]/app/de-thi/page.tsx",
-                                lineNumber: 177,
+                                lineNumber: 185,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h1", {
@@ -571,20 +579,20 @@ void C3c(SinhVien* a, int n) {
                                 children: "Đề Thi"
                             }, void 0, false, {
                                 fileName: "[project]/app/de-thi/page.tsx",
-                                lineNumber: 184,
+                                lineNumber: 192,
                                 columnNumber: 11
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                 className: "w-4"
                             }, void 0, false, {
                                 fileName: "[project]/app/de-thi/page.tsx",
-                                lineNumber: 185,
+                                lineNumber: 193,
                                 columnNumber: 11
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/app/de-thi/page.tsx",
-                        lineNumber: 176,
+                        lineNumber: 184,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("main", {
@@ -604,7 +612,7 @@ void C3c(SinhVien* a, int n) {
                                                             children: exam.title
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/de-thi/page.tsx",
-                                                            lineNumber: 201,
+                                                            lineNumber: 209,
                                                             columnNumber: 21
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -612,37 +620,37 @@ void C3c(SinhVien* a, int n) {
                                                             children: exam.date
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/de-thi/page.tsx",
-                                                            lineNumber: 204,
+                                                            lineNumber: 212,
                                                             columnNumber: 21
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/de-thi/page.tsx",
-                                                    lineNumber: 200,
+                                                    lineNumber: 208,
                                                     columnNumber: 19
                                                 }, this),
                                                 expandedExam === examIndex ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$up$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronUp$3e$__["ChevronUp"], {
                                                     size: 14
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/de-thi/page.tsx",
-                                                    lineNumber: 209,
+                                                    lineNumber: 217,
                                                     columnNumber: 21
                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$chevron$2d$down$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__ChevronDown$3e$__["ChevronDown"], {
                                                     size: 14
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/de-thi/page.tsx",
-                                                    lineNumber: 211,
+                                                    lineNumber: 219,
                                                     columnNumber: 21
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/de-thi/page.tsx",
-                                            lineNumber: 199,
+                                            lineNumber: 207,
                                             columnNumber: 17
                                         }, this)
                                     }, void 0, false, {
                                         fileName: "[project]/app/de-thi/page.tsx",
-                                        lineNumber: 191,
+                                        lineNumber: 199,
                                         columnNumber: 15
                                     }, this),
                                     expandedExam === examIndex && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -655,7 +663,7 @@ void C3c(SinhVien* a, int n) {
                                                         children: q.num
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/de-thi/page.tsx",
-                                                        lineNumber: 223,
+                                                        lineNumber: 231,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -663,7 +671,7 @@ void C3c(SinhVien* a, int n) {
                                                         children: q.desc
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/de-thi/page.tsx",
-                                                        lineNumber: 226,
+                                                        lineNumber: 234,
                                                         columnNumber: 23
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -674,7 +682,7 @@ void C3c(SinhVien* a, int n) {
                                                                 children: q.code
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/de-thi/page.tsx",
-                                                                lineNumber: 230,
+                                                                lineNumber: 238,
                                                                 columnNumber: 25
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -686,47 +694,47 @@ void C3c(SinhVien* a, int n) {
                                                                     className: "text-primary-foreground"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/de-thi/page.tsx",
-                                                                    lineNumber: 241,
+                                                                    lineNumber: 249,
                                                                     columnNumber: 29
                                                                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$lucide$2d$react$2f$dist$2f$esm$2f$icons$2f$copy$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__$3c$export__default__as__Copy$3e$__["Copy"], {
                                                                     size: 10,
                                                                     className: "text-primary-foreground"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/de-thi/page.tsx",
-                                                                    lineNumber: 246,
+                                                                    lineNumber: 254,
                                                                     columnNumber: 29
                                                                 }, this)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/de-thi/page.tsx",
-                                                                lineNumber: 233,
+                                                                lineNumber: 241,
                                                                 columnNumber: 25
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/de-thi/page.tsx",
-                                                        lineNumber: 229,
+                                                        lineNumber: 237,
                                                         columnNumber: 23
                                                     }, this)
                                                 ]
                                             }, qIndex, true, {
                                                 fileName: "[project]/app/de-thi/page.tsx",
-                                                lineNumber: 219,
+                                                lineNumber: 227,
                                                 columnNumber: 21
                                             }, this))
                                     }, void 0, false, {
                                         fileName: "[project]/app/de-thi/page.tsx",
-                                        lineNumber: 217,
+                                        lineNumber: 225,
                                         columnNumber: 17
                                     }, this)
                                 ]
                             }, examIndex, true, {
                                 fileName: "[project]/app/de-thi/page.tsx",
-                                lineNumber: 190,
+                                lineNumber: 198,
                                 columnNumber: 13
                             }, this))
                     }, void 0, false, {
                         fileName: "[project]/app/de-thi/page.tsx",
-                        lineNumber: 188,
+                        lineNumber: 196,
                         columnNumber: 9
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("footer", {
@@ -734,19 +742,19 @@ void C3c(SinhVien* a, int n) {
                         children: "Danh Sách Đề Thi"
                     }, void 0, false, {
                         fileName: "[project]/app/de-thi/page.tsx",
-                        lineNumber: 261,
+                        lineNumber: 269,
                         columnNumber: 9
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/app/de-thi/page.tsx",
-                lineNumber: 175,
+                lineNumber: 183,
                 columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/app/de-thi/page.tsx",
-        lineNumber: 172,
+        lineNumber: 180,
         columnNumber: 5
     }, this);
 }

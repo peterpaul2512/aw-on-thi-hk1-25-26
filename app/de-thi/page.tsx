@@ -24,54 +24,62 @@ export default function DeThiPage() {
         {
           num: "Câu 1 (3 điểm)",
           desc: "Xóa tất cả phần tử lẻ trong mảng",
-          code: `void C1(int*& a, int& n) {
-  if (a == NULL || n < 1) return;
-  for (int i = 0; i < n; i++) {
-    if (a[i] % 2 != 0) {
-      int* b = new int[n - 1];
-      for (int j = 0; j < i; j++)
-        b[j] = a[j];
-      for (int j = i; j < n - 1; j++)
-        b[j] = a[j + 1];
-      delete[] a;
-      a = b;
-      n--;
-      i--;
-    }
-  }
+          code: `void XoaLe(int *&a, int &n){
+	int countChan = 0;
+	for (int i = 0; i<n; i++){
+		if (a[i] %2 == 0) countChan ++;
+	}
+
+	int *pb = new int[countChan];
+
+	int k = 0;
+	for (int i = 0; i < n; i++){
+		if(a[i] %2 == 0 ){
+			pb[k] = a[i]
+			k++;
+		}
+	}
+	delete []a;
+	a = pb;
+	n = countChan;
 }`,
         },
         {
           num: "Câu 2 (3 điểm)",
           desc: "Đếm node chứa số nguyên tố",
-          code: `bool KTNT(int n) {
-  if (n < 2) return false;
-  for (int i = 2; i <= sqrt(n); i++)
-    if (n % i == 0) return false;
-  return true;
+          code: `bool LaSoNguyenTo(int n){
+	if (n < 2 ) return false;
+	for (int i = 2; i <= sqrt(n); i++){
+		if (n %i == 0) return false;
+	}
+	return true;
 }
 
-int countPrime(Node* h) {
-  int demNT = 0;
-  while (h != NULL) {
-    if (KTNT(h->data) == true)
-      demNT++;
-    h = h->pnext;
-  }
-  return demNT;
+int countPrime(Node* h){
+	int count = 0;
+	while (h != NULL){
+		if (LaSoNguyenTo(h->data)){
+			count++
+		}
+		h = h->pNext
+	}
+	return count;
 }`,
         },
         {
           num: "Câu 3 (3 điểm)",
           desc: "Thêm sản phẩm vào tập tin",
-          code: `void themSanPham(const char* tenFile,
-                  const SanPham& sp) {
-  FILE* f;
-  fopen_s(&f, tenFile, "ab");
-  if (f != NULL) {
-    fwrite(&sp, sizeof(SanPham), 1, f);
-    fclose(f);
-  }
+          code: `void themSanPham(const char* tenFile, const SanPham& sp){
+	FILE *fp;
+	fopen_s(&fp, tenFile, "ab");
+
+	if (fp == NULL) {
+		printf("Khong the mo file");
+		return;
+	};
+
+	fwrite(&sp, sizeof(SanPham), 1, fp);
+	fclose(fp);
 }`,
         },
       ],

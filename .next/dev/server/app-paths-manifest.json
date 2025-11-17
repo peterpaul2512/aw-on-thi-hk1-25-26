@@ -1,11 +1,5 @@
 {
-  "/con-tro-ham/page": "app/con-tro-ham/page.js",
-  "/de-quy/page": "app/de-quy/page.js",
+  "/danh-sach-lien-ket/page": "app/danh-sach-lien-ket/page.js",
   "/de-thi/page": "app/de-thi/page.js",
-  "/doc-ghi-tap-tin/page": "app/doc-ghi-tap-tin/page.js",
-  "/mang-1-chieu/page": "app/mang-1-chieu/page.js",
-  "/mang-2-chieu/page": "app/mang-2-chieu/page.js",
-  "/page": "app/page.js",
-  "/queue/page": "app/queue/page.js",
-  "/stack/page": "app/stack/page.js"
+  "/page": "app/page.js"
 }
