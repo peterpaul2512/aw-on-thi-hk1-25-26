@@ -72,7 +72,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$vercel$2f$
 ;
 ;
 const metadata = {
-    title: 'v0 App',
+    title: 'Ôn Thi',
     description: 'Created with v0',
     generator: 'v0.app',
     icons: {

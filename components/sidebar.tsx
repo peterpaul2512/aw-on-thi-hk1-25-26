@@ -13,9 +13,14 @@ import {
   ArrowUpDown,
   FileText,
   X,
+  ChevronDown,
+  ChevronRight,
+  Calculator,
+  Minus,
 } from "lucide-react";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
+import { useState } from "react";
 
 interface SidebarProps {
   isOpen: boolean;
@@ -23,21 +28,48 @@ interface SidebarProps {
 }
 
 export default function Sidebar({ isOpen, onClose }: SidebarProps) {
-  const menuItems = [
-    { icon: List, label: "Mảng 1 chiều", href: "/mang-1-chieu" },
-    { icon: Grid3x3, label: "Mảng 2 chiều", href: "/mang-2-chieu" },
-    { icon: ArrowRight, label: "Con trỏ hàm", href: "/con-tro-ham" },
-    { icon: File, label: "Đọc & Ghi tập tin nhị phân", href: "/doc-ghi-tap-tin" },
-    { icon: GitBranch, label: "Đệ quy", href: "/de-quy" },
-    { icon: Link2, label: "Danh sách liên kết đơn", href: "/danh-sach-lien-ket" },
-    { icon: Layers, label: "Stack", href: "/stack" },
-    { icon: Box, label: "Queue", href: "/queue" },
-    { icon: ArrowUpDown, label: "Các thuật toán sắp xếp", href: "/sap-xep" },
-    { icon: FileText, label: "Đề 31/05/2025", href: "/de-thi" },
-    { icon: FileText, label: "Đề HK2/2024–2025", href: "/de-thi" },
-    { icon: FileText, label: "Đề 18/11/2023", href: "/de-thi" },
-    { icon: FileText, label: "Đề 13/11/2022", href: "/de-thi" },
-    { icon: FileText, label: "Đề 29/05/2022", href: "/de-thi" },
+  const [expandedSections, setExpandedSections] = useState<Record<string, boolean>>({
+    "programming": false,
+    "combinatorics": false,
+  });
+
+  const toggleSection = (section: string) => {
+    setExpandedSections(prev => ({
+      ...prev,
+      [section]: !prev[section]
+    }));
+  };
+
+  const menuSections = [
+    {
+      id: "programming",
+      label: "Kĩ thuật lập trình",
+      items: [
+        { icon: List, label: "Mảng 1 chiều", href: "/mang-1-chieu" },
+        { icon: Grid3x3, label: "Mảng 2 chiều", href: "/mang-2-chieu" },
+        { icon: ArrowRight, label: "Con trỏ hàm", href: "/con-tro-ham" },
+        { icon: File, label: "Đọc & Ghi tập tin nhị phân", href: "/doc-ghi-tap-tin" },
+        { icon: GitBranch, label: "Đệ quy", href: "/de-quy" },
+        { icon: Link2, label: "Danh sách liên kết đơn", href: "/danh-sach-lien-ket" },
+        { icon: Layers, label: "Stack", href: "/stack" },
+        { icon: Box, label: "Queue", href: "/queue" },
+        { icon: ArrowUpDown, label: "Các thuật toán sắp xếp", href: "/sap-xep" },
+        { icon: FileText, label: "Đề 31/05/2025", href: "/de-thi" },
+        { icon: FileText, label: "Đề HK2/2024–2025", href: "/de-thi" },
+        { icon: FileText, label: "Đề 18/11/2023", href: "/de-thi" },
+        { icon: FileText, label: "Đề 13/11/2022", href: "/de-thi" },
+        { icon: FileText, label: "Đề 29/05/2022", href: "/de-thi" },
+      ]
+    },
+    {
+      id: "combinatorics",
+      label: "Toán Tổ Hợp",
+      items: [
+        { icon: Calculator, label: "Quy tắc đếm", href: "/quy-tac-dem" },
+        { icon: Minus, label: "Nguyên Lý bù trừ", href: "/nguyen-ly-bu-tru" },
+        { icon: FileText, label: "Đề tham khảo", href: "/de-tham-khao" },
+      ]
+    }
   ];
 
   return (
@@ -76,18 +108,40 @@ export default function Sidebar({ isOpen, onClose }: SidebarProps) {
         {/* Menu Items - Scrollable */}
         <nav className="flex-1 overflow-y-auto">
           <ul className="flex flex-col gap-0.5 p-1">
-            {menuItems.map((item) => (
-              <li key={item.label}>
-                <Link href={item.href}>
-                  <button
-                    onClick={onClose}
-                    className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-sidebar-accent transition-colors group cursor-pointer text-sidebar-foreground hover:text-sidebar-accent-foreground text-left"
-                    title={item.label}
-                  >
-                    <item.icon size={14} className="flex-shrink-0" />
-                    <span className="text-xs truncate">{item.label}</span>
-                  </button>
-                </Link>
+            {menuSections.map((section) => (
+              <li key={section.id}>
+                {/* Section Header */}
+                <button
+                  onClick={() => toggleSection(section.id)}
+                  className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-sidebar-accent transition-colors group text-sidebar-foreground hover:text-sidebar-accent-foreground text-left font-semibold"
+                >
+                  {expandedSections[section.id] ? (
+                    <ChevronDown size={14} className="flex-shrink-0" />
+                  ) : (
+                    <ChevronRight size={14} className="flex-shrink-0" />
+                  )}
+                  <span className="text-xs">{section.label}</span>
+                </button>
+
+                {/* Section Items */}
+                {expandedSections[section.id] && section.items.length > 0 && (
+                  <ul className="ml-4 mt-0.5 flex flex-col gap-0.5">
+                    {section.items.map((item) => (
+                      <li key={item.label}>
+                        <Link href={item.href}>
+                          <button
+                            onClick={onClose}
+                            className="w-full flex items-center gap-2 px-2 py-1.5 rounded-lg hover:bg-sidebar-accent transition-colors group cursor-pointer text-sidebar-foreground hover:text-sidebar-accent-foreground text-left"
+                            title={item.label}
+                          >
+                            <item.icon size={14} className="flex-shrink-0" />
+                            <span className="text-xs truncate">{item.label}</span>
+                          </button>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </li>
             ))}
           </ul>
