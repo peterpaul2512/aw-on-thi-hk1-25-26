@@ -136,7 +136,7 @@ export default function Mang1ChieuPage() {
             <Card key={index} className="p-1.5 bg-card border border-border">
               <h3 className="text-xs font-semibold text-foreground mb-1 line-clamp-2">{func.title}</h3>
               <div className="relative bg-muted rounded p-1.5 mb-1">
-                <pre className="text-[10px] overflow-x-auto text-muted-foreground whitespace-pre-wrap break-words leading-tight font-mono">
+                <pre className="text-[10px] text-muted-foreground whitespace-pre-wrap break-words leading-tight font-mono">
                   {func.code}
                 </pre>
                 <button

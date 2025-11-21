@@ -230,7 +230,7 @@ a + 4b ≥ 8 > 7 → không thỏa
                 {question.title}
               </h3>
               <div className="relative bg-muted rounded p-1.5 mb-1">
-                <div className="text-[10px] overflow-x-auto text-muted-foreground whitespace-pre-wrap break-words leading-tight">
+                <div className="text-[10px] text-muted-foreground whitespace-pre-wrap break-words leading-tight">
                   {question.content}
                 </div>
                 <button

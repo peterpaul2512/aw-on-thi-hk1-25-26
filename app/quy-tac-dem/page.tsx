@@ -275,7 +275,7 @@ Sử dụng nguyên lý bù trừ để đếm.`,
                 {example.title}
               </h3>
               <div className="relative bg-muted rounded p-1.5 mb-1">
-                <div className="text-[10px] overflow-x-auto text-muted-foreground whitespace-pre-wrap break-words leading-tight">
+                <div className="text-[10px] text-muted-foreground whitespace-pre-wrap break-words leading-tight">
                   {example.content}
                 </div>
                 <button

@@ -235,7 +235,7 @@ void C3c(SinhVien* a, int n) {
                         {q.desc}
                       </p>
                       <div className="relative bg-background rounded p-1">
-                        <pre className="text-[9px] overflow-x-auto text-muted-foreground whitespace-pre-wrap break-words leading-tight font-mono">
+                        <pre className="text-[9px] text-muted-foreground whitespace-pre-wrap break-words leading-tight font-mono">
                           {q.code}
                         </pre>
                         <button

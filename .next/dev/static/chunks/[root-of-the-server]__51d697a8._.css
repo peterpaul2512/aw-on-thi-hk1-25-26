@@ -1447,12 +1447,6 @@
     margin-block-end: calc(calc(var(--spacing) * 1.5) * calc(1 - var(--tw-space-y-reverse)));
   }
 
-  :where(.space-y-2 > :not(:last-child)) {
-    --tw-space-y-reverse: 0;
-    margin-block-start: calc(calc(var(--spacing) * 2) * var(--tw-space-y-reverse));
-    margin-block-end: calc(calc(var(--spacing) * 2) * calc(1 - var(--tw-space-y-reverse)));
-  }
-
   :where(.space-x-4 > :not(:last-child)) {
     --tw-space-x-reverse: 0;
     margin-inline-start: calc(calc(var(--spacing) * 4) * var(--tw-space-x-reverse));
@@ -5155,8 +5149,8 @@
   --accent-foreground: #fff6f8;
   --secondary: #ebe2e4;
   --secondary-foreground: #050c13;
-  --muted: #d4cbcd;
-  --muted-foreground: #69737d;
+  --muted: #eee5e7;
+  --muted-foreground: #4d5660;
   --border: #e4dbde;
   --input: #ebe2e4;
   --ring: #00579c;
@@ -5186,8 +5180,8 @@
     --accent-foreground: lab(97.5544% 3.37881 .0330448);
     --secondary: lab(90.5944% 3.37854 .0330448);
     --secondary-foreground: lab(3.01922% -.727452 -4.46609);
-    --muted: lab(82.4744% 3.37791 .0330925);
-    --muted-foreground: lab(47.7753% -2.03165 -7.06354);
+    --muted: lab(91.7544% 3.37851 .0330687);
+    --muted-foreground: lab(36.1728% -1.98329 -7.04196);
     --border: lab(88.2744% 3.37833 .0330806);
     --input: lab(90.5944% 3.37854 .0330448);
     --ring: lab(34.7681% 4.91267 -59.8147);
@@ -5216,8 +5210,8 @@
   --accent-foreground: #02060d;
   --secondary: #1a222b;
   --secondary-foreground: #f5ecee;
-  --muted: #262f38;
-  --muted-foreground: #86909b;
+  --muted: #141b24;
+  --muted-foreground: #95a0ab;
   --border: #1a222b;
   --input: #141b24;
   --ring: #3a93e6;
@@ -5244,8 +5238,8 @@
     --accent-foreground: lab(1.53827% -.389941 -2.97685);
     --secondary: lab(12.9615% -1.76475 -6.95769);
     --secondary-foreground: lab(94.0744% 3.37866 .0330448);
-    --muted: lab(18.7658% -1.84783 -6.98735);
-    --muted-foreground: lab(59.377% -2.06482 -7.07911);
+    --muted: lab(9.47796% -1.69583 -6.93499);
+    --muted-foreground: lab(65.1777% -2.07776 -7.08538);
     --border: lab(12.9615% -1.76475 -6.95769);
     --input: lab(9.47796% -1.69583 -6.93499);
     --ring: lab(58.7199% -5.55909 -50.5326);
